@@ -1,24 +1,3 @@
-# README
+# TodoMVC Rails 7.1 app for the MAS-RAD 2023
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[![Rails Test Action Status](https://github.com/mas-rad/todomvc-rails-2023/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/mas-rad/todomvc-rails-2023/actions/workflows/test.yml)
