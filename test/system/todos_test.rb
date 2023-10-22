@@ -14,28 +14,30 @@ class TodosTest < ApplicationSystemTestCase
     visit todos_url
     click_on "New todo"
 
-    check "Completed" if @todo.completed
-    fill_in "Title", with: @todo.title
+    check "Completed"
+    fill_in "Title", with: "My todo"
     click_on "Create Todo"
 
     assert_text "Todo was successfully created"
-    click_on "Back"
+    assert_text "Title: My todo"
+    assert_text "Completed: true"
   end
 
   test "should update Todo" do
-    visit todo_url(@todo)
+    visit todos_url
     click_on "Edit this todo", match: :first
 
-    check "Completed" if @todo.completed
-    fill_in "Title", with: @todo.title
+    check "Completed"
+    fill_in "Title", with: "My ToDo"
     click_on "Update Todo"
 
     assert_text "Todo was successfully updated"
-    click_on "Back"
+    assert_text "Title: My ToDo"
+    assert_text "Completed: true"
   end
 
   test "should destroy Todo" do
-    visit todo_url(@todo)
+    visit todos_url
     click_on "Destroy this todo", match: :first
 
     assert_text "Todo was successfully destroyed"

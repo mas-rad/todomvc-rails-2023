@@ -20,12 +20,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
       post todos_url, params: { todo: { completed: @todo.completed, title: @todo.title } }
     end
 
-    assert_redirected_to todo_url(Todo.last)
-  end
-
-  test "should show todo" do
-    get todo_url(@todo)
-    assert_response :success
+    assert_redirected_to todos_url
   end
 
   test "should get edit" do
@@ -35,7 +30,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
   test "should update todo" do
     patch todo_url(@todo), params: { todo: { completed: @todo.completed, title: @todo.title } }
-    assert_redirected_to todo_url(@todo)
+    assert_redirected_to todos_url
   end
 
   test "should destroy todo" do
