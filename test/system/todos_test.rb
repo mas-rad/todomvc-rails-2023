@@ -114,4 +114,17 @@ class TodosTest < ApplicationSystemTestCase
     ], todos_title
     assert_equal '2 items left', todos_counter
   end
+
+  test "clearing all completed todos" do
+    visit todos_url
+
+    click_on "Clear completed"
+
+    assert_no_selector 'label', text: 'Install Ruby'
+    assert_no_selector 'button.clear-completed', text: 'Clear completed'
+    assert_equal [
+      'Learn Rails',
+      'Try Hotwire'
+    ], todos_title
+  end
 end
