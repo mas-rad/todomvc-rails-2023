@@ -25,6 +25,17 @@ class TodosTest < ApplicationSystemTestCase
     assert_equal 'All', selected_filter
   end
 
+  test "visiting the index with no todos" do
+    Todo.delete_all
+
+    visit root_url
+
+    assert_selector 'h1', text: 'todos'
+    assert_empty todos_title
+    refute_selector 'section.main'
+    refute_selector 'section.footer'
+  end
+
   test "visiting active todos" do
     visit todos_url
     click_on "Active"
