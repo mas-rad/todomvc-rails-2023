@@ -46,10 +46,16 @@ class TodosTest < ApplicationSystemTestCase
   #   assert_text "Completed: true"
   # end
 
-  # test "should destroy Todo" do
-  #   visit todos_url
-  #   click_on "Destroy this todo", match: :first
+  test "deleting a todo" do
+    visit todos_url
 
-  #   assert_text "Todo was successfully destroyed"
-  # end
+    first('ul.todo-list li').hover
+    click_button class: 'destroy'
+
+    assert_no_selector 'label', text: 'Install Ruby'
+    assert_equal [
+      'Learn Rails',
+      'Try Hotwire',
+    ], todos_title
+  end
 end
