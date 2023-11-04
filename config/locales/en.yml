@@ -28,4 +28,8 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  layouts:
+    footer:
+      items_left_html:
+        one: '<strong>1</strong> item left'
+        other: '<strong>%{count}</strong> items left'
