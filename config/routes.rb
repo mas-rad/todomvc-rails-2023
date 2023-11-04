@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: redirect("/todos")
 
+  get 'todos/active', to: 'todos#index', as: 'active_todos', scope: 'active'
+  get 'todos/completed', to: 'todos#index', as: 'completed_todos', scope: 'completed'
+
   resources :todos, except: [:new]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
