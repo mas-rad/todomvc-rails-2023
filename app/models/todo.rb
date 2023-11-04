@@ -5,4 +5,8 @@ class Todo < ApplicationRecord
   validates :title, presence: true
 
   normalizes :title, with: ->(title) { title.strip }
+
+  def self.toggle_all!
+    update_all(completed: active.any?)
+  end
 end

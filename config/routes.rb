@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :todos, except: [:new] do
     collection do
+      patch :toggle
       delete :completed, to: 'todos#destroy_completed'
     end
   end

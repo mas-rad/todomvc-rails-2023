@@ -45,6 +45,16 @@ class TodosController < ApplicationController
     end
   end
 
+  # PATCH/PUT /todos/toggle or /todos/toggle.json
+  def toggle
+    Todo.toggle_all!
+
+    respond_to do |format|
+      format.html { redirect_back_or_to todos_url }
+      format.json { render json: Todo.all }
+    end
+  end
+
   # DELETE /todos/1 or /todos/1.json
   def destroy
     @todo.destroy!

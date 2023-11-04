@@ -101,6 +101,24 @@ class TodosTest < ApplicationSystemTestCase
     assert_equal '2 items left', todos_counter
   end
 
+  test "toggling all todos" do
+    visit todos_url
+
+    find('label', text: 'Mark all as complete').click
+
+    assert_equal [
+      'Install Ruby',
+      'Learn Rails',
+      'Try Hotwire',
+    ], completed_todos_title
+    assert_equal '0 items left', todos_counter
+
+    find('label', text: 'Mark all as complete').click
+
+    assert_equal [], completed_todos_title
+    assert_equal '3 items left', todos_counter
+  end
+
   test "deleting a todo" do
     visit todos_url
 
