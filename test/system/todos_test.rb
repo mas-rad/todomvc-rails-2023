@@ -7,29 +7,29 @@ class TodosTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit todos_url
-    assert_selector "h1", text: "Todos"
+    assert_selector "h1", text: "todos"
   end
 
   test "should create todo" do
     visit todos_url
-    click_on "New todo"
 
-    check "Completed"
-    fill_in "Title", with: "My todo"
-    click_on "Create Todo"
+    fill_in 'todo_title', with: 'Learn Rails test'
+    find('#todo_title').native.send_keys(:return)
 
     assert_text "Todo was successfully created"
-    assert_text "Title: My todo"
-    assert_text "Completed: true"
+    assert_text "Title: Learn Rails test"
+    assert_text "Completed: false"
   end
 
   test "should update Todo" do
     visit todos_url
     click_on "Edit this todo", match: :first
 
-    check "Completed"
-    fill_in "Title", with: "My ToDo"
-    click_on "Update Todo"
+    within 'section.main' do
+      check "Completed"
+      fill_in "Title", with: "My ToDo"
+      click_on "Update Todo"
+    end
 
     assert_text "Todo was successfully updated"
     assert_text "Title: My ToDo"

@@ -10,9 +10,10 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_todo_url
-    assert_response :success
+  test "get new should raise" do
+    assert_raises NameError do
+      get new_todo_url
+    end
   end
 
   test "should create todo" do
