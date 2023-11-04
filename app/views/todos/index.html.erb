@@ -1,9 +1,5 @@
-<div id="todos">
+<ul class="todo-list">
   <% @todos.each do |todo| %>
     <%= render todo %>
-    <p>
-      <%= link_to "Edit this todo", edit_todo_path(todo) %>
-      <%= button_to "Destroy this todo", todo, method: :delete %>
-    </p>
   <% end %>
-</div>
+</ul>
