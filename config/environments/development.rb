@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << "todomvc.test"
+  # config.hosts << "todomvc.test"
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
@@ -72,4 +72,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # config.hosts = [
+  #   IPAddr.new("0.0.0.0/0"), # All IPv4 addresses.
+  #   IPAddr.new("::/0"),      # All IPv6 addresses.
+  #   "localhost",              # The localhost reserved domain.
+  #   "localhost:3000"
+  # ]
 end
