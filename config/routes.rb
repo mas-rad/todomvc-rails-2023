@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get '/', to: redirect('/todos')
+  root to: redirect('/todos')
 end
