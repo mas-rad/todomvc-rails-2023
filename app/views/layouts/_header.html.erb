@@ -1,6 +1,6 @@
 <header class="header">
   <h1>todos</h1>
   <%= form_with(model: Todo.new, id: 'new-todo') do |form| %>
-    TODO
+    <%= form.text_field :title, autofocus: true, class: "new-todo", placeholder:"What needs to be done ?" %>
   <% end %>
 </header>
