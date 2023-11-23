@@ -1,6 +1,7 @@
 <header class="header">
   <h1>todos</h1>
   <%= form_with(model: Todo.new, id: 'new-todo') do |form| %>
-    TODO
+    <%= form.label :title, 'New todo' %>
+    <%= form.text_field :title %>
   <% end %>
 </header>
