@@ -1,4 +1,5 @@
 class Todo < ApplicationRecord
-  # TODO 1
-  # TODO 2
+    validates :title, presence: true
+    normalizes :title, with: -> title {title.strip}
+
 end
