@@ -1,4 +1,4 @@
-<li id="<%= dom_id todo %>" class="<%= todo.completed ? 'completed' : '' %>">
+<li id="<%= dom_id todo %>" class="<%= class_names(completed: todo.completed?) %>">
   <div class="view">
     <%= form_for todo do |form| %>
       <%= form.check_box :completed, class: 'toggle', onchange: 'this.form.requestSubmit()' %>
