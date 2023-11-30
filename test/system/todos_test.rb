@@ -9,6 +9,10 @@ class TodosTest < ApplicationSystemTestCase
     all('ul.todo-list li.completed label').map(&:text)
   end
 
+  def selected_filter
+    first('ul.filters li a.selected').text
+  end
+
   test "visiting the index" do
     visit todos_url
     assert_selector "h1", text: "todos"
@@ -18,6 +22,28 @@ class TodosTest < ApplicationSystemTestCase
       'Learn Rails',
       'Try Hotwire'
     ], todos_title
+    assert_equal 'All', selected_filter
+  end
+
+  test "visiting active todos" do
+    visit todos_url
+    click_on "Active"
+
+    assert_no_selector 'label', text: 'Install Ruby'
+    assert_equal [
+      'Learn Rails',
+      'Try Hotwire'
+    ], todos_title
+    assert_equal 'Active', selected_filter
+  end
+
+  test "visiting completed todos" do
+    visit todos_url
+    click_on "Completed"
+
+    assert_no_selector 'label', text: 'Learn Rails'
+    assert_equal ['Install Ruby'], todos_title
+    assert_equal 'Completed', selected_filter
   end
 
   test "creating a todo" do

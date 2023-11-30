@@ -3,6 +3,7 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
+    # TODO, hint: use `params[:scope]` value to filter the todos
     @todos = Todo.order(:created_at)
   end
 
