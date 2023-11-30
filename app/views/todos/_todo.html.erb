@@ -1,6 +1,6 @@
 <li id="<%= dom_id todo %>">
   <div class="view">
     <label><%= todo.title %></label>
-    <%# TODO %>
+    <%= button_to "",todo, method: :delete , class: "destroy" %>
   </div>
 </li>
