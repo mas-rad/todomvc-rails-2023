@@ -1,7 +1,7 @@
-<li id="<%= dom_id todo %>" class="TODO">
+<li id="<%= dom_id todo %>" class="<%= todo.completed ? 'completed' : '' %>">
   <div class="view">
     <%= form_for todo do |form| %>
-      <%# TODO %>
+      <%= form.check_box :completed, class: "toggle", onchange:"this.form.requestSubmit()" %>
     <% end %>
     <label><%= todo.title %></label>
     <%= button_to('', todo, method: :delete, class: 'destroy') %>
