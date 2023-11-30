@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: redirect("/todos")
 
   get 'todos/active', to: 'todos#index', as: 'active_todos', scope: 'active'
-  # TODO
+  get 'todos/completed', to: 'todos#index', as: 'completed_todos', scope: 'completed'
 
   resources :todos, except: [:new]
 
