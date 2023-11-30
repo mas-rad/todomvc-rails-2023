@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: redirect("/todos")
 
+  # Get to actives Todos
   get 'todos/active', to: 'todos#index', as: 'active_todos', scope: 'active'
-  # TODO
+
+  #Get to completed Todos
+  get 'todos/completed', to: 'todos#index', as: 'completed_todos', scope: 'completed'
 
   resources :todos, except: [:new]
 

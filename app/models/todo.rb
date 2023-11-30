@@ -1,6 +1,7 @@
 class Todo < ApplicationRecord
   scope :active, -> { where(completed: false) }
-  # TODO
+
+  scope :completed, -> { where(completed: true) }
 
   validates :title, presence: true
 
