@@ -4,7 +4,13 @@ class TodosController < ApplicationController
   # GET /todos or /todos.json
   def index
     # TODO, hint: use `params[:scope]` value to filter the todos
+    # puts "TodosController params[:scope] : #{params[:scope]}"
     @todos = Todo.order(:created_at)
+    if params[:scope].in?(%w[active completed])
+      @todos = @todos.public_send(params[:scope])
+      # params[:scope]=="completed" ? @todos = Todo.order(:created_at).completed : @todos = Todo.order(:created_at).active
+    end
+
   end
 
   # GET /todos/1.json
