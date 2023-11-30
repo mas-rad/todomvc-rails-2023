@@ -17,10 +17,12 @@
 
     <section class="todoapp">
       <%= render 'layouts/header' %>
-      <section class="main">
-        <%= yield %>
-      </section>
-      <%= render 'layouts/footer' %>
+      <% if @todos.present? %>
+        <section class="main">
+          <%= yield %>
+        </section>
+        <%= render 'layouts/footer' %>
+      <% end %>
     </section>
   </body>
 </html>
