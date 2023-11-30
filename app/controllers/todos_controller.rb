@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   # GET /todos or /todos.json
   def index
     @todos = Todo.order(:created_at)
-    @todos = params[:scope] ? @todos.send(params[:scope]) : @todos
+    @todos = params[:scope] ? @todos.public_send(params[:scope]) : @todos
   end
 
   # GET /todos/1.json
