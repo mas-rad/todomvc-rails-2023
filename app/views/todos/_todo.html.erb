@@ -1,5 +1,8 @@
-<li id="<%= dom_id todo %>">
+<li id="<%= dom_id todo %>" class="TODO">
   <div class="view">
+    <%= form_for todo do |form| %>
+      <%# TODO %>
+    <% end %>
     <label><%= todo.title %></label>
     <%= button_to('', todo, method: :delete, class: 'destroy') %>
   </div>

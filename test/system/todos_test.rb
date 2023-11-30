@@ -5,6 +5,10 @@ class TodosTest < ApplicationSystemTestCase
     all('ul.todo-list label').map(&:text)
   end
 
+  def completed_todos_title
+    all('ul.todo-list li.completed label').map(&:text)
+  end
+
   test "visiting the index" do
     visit todos_url
     assert_selector "h1", text: "todos"
@@ -16,7 +20,7 @@ class TodosTest < ApplicationSystemTestCase
     ], todos_title
   end
 
-  test "should create todo" do
+  test "creating a todo" do
     visit todos_url
 
     fill_in 'todo_title', with: 'Learn Rails test'
@@ -31,20 +35,24 @@ class TodosTest < ApplicationSystemTestCase
     ], todos_title
   end
 
-  # test "should update Todo" do
-  #   visit todos_url
-  #   click_on "Edit this todo", match: :first
+  test "marking a todo as completed or not" do
+    visit todos_url
 
-  #   within 'section.main' do
-  #     check "Completed"
-  #     fill_in "Title", with: "My ToDo"
-  #     click_on "Update Todo"
-  #   end
+    assert_equal ['Install Ruby'], completed_todos_title
 
-  #   assert_text "Todo was successfully updated"
-  #   assert_text "Title: My ToDo"
-  #   assert_text "Completed: true"
-  # end
+    first('li:not(.completed) input.toggle', visible: false).check
+
+    assert_selector 'li.completed', text: 'Learn Rails'
+    assert_equal [
+      'Install Ruby',
+      'Learn Rails'
+    ], completed_todos_title
+
+    first('input.toggle:checked', visible: false).uncheck
+
+    assert_no_selector 'li.completed', text: 'Install Ruby'
+    assert_equal ['Learn Rails'], completed_todos_title
+  end
 
   test "deleting a todo" do
     visit todos_url
