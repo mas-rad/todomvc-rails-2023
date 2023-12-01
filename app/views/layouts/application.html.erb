@@ -17,10 +17,12 @@
 
     <section class="todoapp">
       <%= render 'layouts/header' %>
+      <% unless @skip_main %>
       <section class="main">
         <%= yield %>
       </section>
-      <%= render 'layouts/footer' %>
+      <% end %>
+      <%= render 'layouts/footer' unless @skip_footer %>
     </section>
   </body>
 </html>

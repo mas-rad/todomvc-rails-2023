@@ -6,6 +6,9 @@ class TodosController < ApplicationController
     @todos = Todo.order(:created_at)
     if params[:scope].in?(%w[active completed])
       @todos = @todos.public_send(params[:scope])
+    else
+      @skip_main = @todos.length == 0
+      @skip_footer = @todos.length == 0
     end
   end
 
