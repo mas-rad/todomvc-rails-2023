@@ -5,6 +5,9 @@ class TodosController < ApplicationController
   def index
     # TODO, hint: use `params[:scope]` value to filter the todos
     @todos = Todo.order(:created_at)
+    if (params[:scope].in? %w[completed active])
+      params[:scope]=="completed" ? @todos = Todo.order(:created_at).completed : @todos = Todo.order(:created_at).active
+    end
   end
 
   # GET /todos/1.json
