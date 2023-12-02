@@ -1,9 +1,15 @@
 <li id="<%= dom_id todo %>" class="<%= 'completed' if todo.completed? %>">
-  <div class="view">
+  <div
+    class="view"
+    data-controller="visitable"
+    data-visitable-url-value="<%= edit_todo_path(todo) %>"
+  >
     <%= form_for todo do |form| %>
       <%= form.check_box :completed, class: 'toggle', onchange: 'this.form.requestSubmit()' %>
     <% end %>
-    <label><%= todo.title %></label>
+    <label data-action="dblclick->visitable#visit">
+      <%= todo.title %>
+    </label>
     <%= button_to('', todo, method: :delete, class: 'destroy') %>
   </div>
 </li>
