@@ -122,6 +122,27 @@ class TodosTest < ApplicationSystemTestCase
     assert_selector 'label', text: 'Learn Rails'
   end
 
+  test "editing a todo with a blank title" do
+    visit root_url
+
+    assert_equal [
+      'Install Ruby',
+      'Learn Rails',
+      'Try Hotwire',
+    ], todos_title
+
+    find('label', text: 'Learn Rails').double_click
+
+    input = first('input.edit')
+    input.fill_in with: '   '
+    input.native.send_keys(:return)
+
+    assert_equal [
+      'Install Ruby',
+      'Try Hotwire',
+    ], todos_title
+  end
+
   test "marking a todo as completed or not" do
     visit todos_url
 
