@@ -50,6 +50,7 @@ class TodosController < ApplicationController
     Todo.toggle_all!
 
     respond_to do |format|
+      flash[:notice] = "Toggled"
       format.html { redirect_back_or_to todos_url }
       format.json { render json: Todo.all }
     end
