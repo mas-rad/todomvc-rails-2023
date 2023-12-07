@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'todos/active', to: 'todos#index', as: 'active_todos', scope: 'active'
   get 'todos/completed', to: 'todos#index', as: 'completed_todos', scope: 'completed'
 
-  resources :todos, except: [:new]
+  resources :todos, except: [:new] do
+    collection do
+      delete :completed, to: 'todos#destroy_completed'
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
