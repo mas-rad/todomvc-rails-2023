@@ -1,6 +1,5 @@
 <%= form_with url: toggle_todos_url, method: :patch do |form| %>
-  <%# TODO: Fix the `checked: true` logic %>
-  <%= form.check_box 'toggle', checked: true, class: 'toggle-all', onchange: 'this.form.requestSubmit()' %>
+  <%= form.check_box 'toggle', checked: Todo.active.none?, class: 'toggle-all', onchange: 'this.form.requestSubmit()' %>
   <%= form.label 'toggle', 'Mark all as complete' %>
 <% end %>
 <ul class="todo-list">

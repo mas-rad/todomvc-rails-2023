@@ -7,6 +7,6 @@ class Todo < ApplicationRecord
   normalizes :title, with: ->(title) { title.strip }
 
   def self.toggle_all!
-    # TODO
+    Todo.update_all(completed: Todo.active.any?)
   end
 end
