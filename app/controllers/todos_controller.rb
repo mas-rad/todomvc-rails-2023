@@ -57,7 +57,10 @@ class TodosController < ApplicationController
 
   # DELETE /todos/completed or /todos/completed.json
   def destroy_completed
-    # TODO
+    # Log when get methode
+    Rails.logger.info "Completed Hello world"
+    # Delete all completed todos by the Model Todo scope 
+    Todo.completed.destroy_all
 
     respond_to do |format|
       format.html { redirect_back_or_to todos_url }
