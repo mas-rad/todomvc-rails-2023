@@ -17,7 +17,7 @@
 
     <section class="todoapp">
       <%= render 'layouts/header' %>
-      <% if @todos.present? %>
+      <% if @todos.any? %>
         <section class="main">
           <%= yield %>
         </section>
