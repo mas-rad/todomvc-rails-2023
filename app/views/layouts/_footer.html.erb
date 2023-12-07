@@ -5,5 +5,7 @@
     <li><%= link_to 'Active', active_todos_path, class: filter_class('active') %></li>
     <li><%= link_to 'Completed', completed_todos_path, class: filter_class('completed') %></li>
   </ul>
-  <%# TODO %>
+  <% if (Todo.completed.count != 0) %>
+    <%= button_to "Clear completed", "todos/completed", method: :delete, form_class: "clear-completed" %>
+  <% end %>
 </footer>

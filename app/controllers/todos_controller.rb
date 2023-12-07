@@ -57,7 +57,9 @@ class TodosController < ApplicationController
 
   # DELETE /todos/completed or /todos/completed.json
   def destroy_completed
-    # TODO
+    Todo.completed.each do |todo|
+      todo.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_back_or_to todos_url }
