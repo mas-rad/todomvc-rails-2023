@@ -48,7 +48,7 @@ class TodosController < ApplicationController
   # DELETE /todos/1 or /todos/1.json
   def destroy
     @todo.destroy!
-
+    flash[:success] = "Todo destroyed!."
     respond_to do |format|
       format.html { redirect_back_or_to todos_url }
       format.json { head :no_content }
@@ -57,7 +57,7 @@ class TodosController < ApplicationController
 
   # DELETE /todos/completed or /todos/completed.json
   def destroy_completed
-    # TODO
+    Todo.completed.destroy_all
 
     respond_to do |format|
       format.html { redirect_back_or_to todos_url }

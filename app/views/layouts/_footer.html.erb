@@ -4,6 +4,9 @@
     <li><%= link_to 'All', todos_path, class: filter_class(nil) %></li>
     <li><%= link_to 'Active', active_todos_path, class: filter_class('active') %></li>
     <li><%= link_to 'Completed', completed_todos_path, class: filter_class('completed') %></li>
+    
   </ul>
-  <%# TODO %>
+  <% if Todo.completed.any? %>
+    <%= button_to 'Clear completed', completed_todos_path, method: :delete, class: 'clear-completed' %>
+  <% end %>
 </footer>
