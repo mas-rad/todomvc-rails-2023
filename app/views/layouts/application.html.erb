@@ -16,12 +16,12 @@
     <% end %>
     <section class="todoapp">
       <%= render 'layouts/header' %>
-      <%if Todo.count>0%>
+      <% if Todo.any? %>
         <section class="main">
           <%= yield %>
         </section>
           <%= render 'layouts/footer' %>  
-      <%end%>
+      <% end %>
     </section>
   </body>
 </html>
