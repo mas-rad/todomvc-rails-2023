@@ -14,13 +14,14 @@
     <% if notice %>
       <p class='flash notice'><%= notice %></p>
     <% end %>
-
     <section class="todoapp">
       <%= render 'layouts/header' %>
-      <section class="main">
-        <%= yield %>
-      </section>
-      <%= render 'layouts/footer' %>
+      <%if Todo.count>0%>
+        <section class="main">
+          <%= yield %>
+        </section>
+          <%= render 'layouts/footer' %>  
+      <%end%>
     </section>
   </body>
 </html>
