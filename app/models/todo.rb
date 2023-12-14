@@ -11,6 +11,10 @@ class Todo < ApplicationRecord
   end
 
   def update_or_destroy(attributes)
-    # TODO
+    if attributes[:title].blank?
+      self.destroy!
+    else
+      self.update(attributes)
+    end
   end
 end
