@@ -1,5 +1,5 @@
 <li id="<%= dom_id todo %>" class="editing">
-  <%= form_for todo, data: { controller: 'submitable reloader' } do |form| %>
+  <%= form_for todo, data: { controller: 'submitable reloader', action: "keydown.esc->reloader#reload" } do |form| %>
     <%= form.text_field :title,
       required: true,
       class: 'edit',
