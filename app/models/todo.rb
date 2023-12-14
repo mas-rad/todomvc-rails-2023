@@ -16,7 +16,7 @@ class Todo < ApplicationRecord
     if self.title.blank?
       self.destroy()
     else
-      self.update()
+      self.save()
     end
   end
 end
