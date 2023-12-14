@@ -11,6 +11,12 @@ class Todo < ApplicationRecord
   end
 
   def update_or_destroy(attributes)
-    # TODO
+    pp attributes
+    self.assign_attributes(attributes)
+    if self.title.blank?
+      self.destroy()
+    else
+      self.save()
+    end
   end
 end
