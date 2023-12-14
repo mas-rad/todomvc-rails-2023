@@ -5,7 +5,7 @@
       class: 'edit',
       data: {
         controller: 'input-focus',
-        action: 'blur->submitable#submit'
+        action: 'blur->submitable#submit keydown.esc->reloader#reload'
       }
     %>
   <% end %>
