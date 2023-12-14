@@ -3,7 +3,7 @@
     <%= form.text_field :title,
       required: true,
       class: 'edit',
-      data: { controller: 'input-focus' }
+      data: { controller: 'input-focus', action: "blur->submitable#submit" }
     %>
   <% end %>
 </li>
