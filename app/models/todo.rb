@@ -9,4 +9,8 @@ class Todo < ApplicationRecord
   def self.toggle_all!
     update_all(completed: active.any?)
   end
+
+  def update_or_destroy(attributes)
+    # TODO
+  end
 end

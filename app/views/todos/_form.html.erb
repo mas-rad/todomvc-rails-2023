@@ -1,7 +1,6 @@
 <li id="<%= dom_id todo %>" class="editing">
   <%= form_for todo, data: { controller: 'submitable reloader' } do |form| %>
     <%= form.text_field :title,
-      required: true,
       class: 'edit',
       data: {
         controller: 'input-focus',
